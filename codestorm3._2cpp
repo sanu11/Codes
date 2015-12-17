@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+   int t;
+   scanf("%d",&t);
+   while(t--)
+   {
+       int n,k;
+       scanf("%d",&n);
+       vector<int>v(n+1,0);
+int vi[n];
+       for(int i=1;i<=n;i++)
+           v[i]=i+1;
+	if(n%2==0)
+	{
+	for(int i=2;i<=n/2;i=i+2)
+	{
+	vi[i]=1;
+	vi[i-1+n/2]=1;
+	}	
+	for(int i=1;i<=n;i++)
+	if(vi[i]==1)
+	v.erase(v.begin()+i);
+
+	for(int i=1;i<=v.size();i++)	
+	cout<<v[i]<<" ";
+	}
+	else
+	{
+	
+	}
+
+  //  for(int i=0;i<v.size();i++)
+//           cout<<v[i]<<"\n";
+    }
+    return 0;
+}
