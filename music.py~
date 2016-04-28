@@ -1,4 +1,0 @@
-import pyglet
-win=pyglet.window.window(500,500)
-
-pyglet.app.run()
