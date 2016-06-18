@@ -1,4 +1,4 @@
 
 # Codes
-Competitve Programming Codes(code-chef,hacker-rank)
+Competitve Programming Codes(Code-chef,Hacker-rank,Spoj)
 
