@@ -1,0 +1,10 @@
+from random import random
+t=randint(1,10)
+print t
+while t:
+	n=randint(1,10)
+	print n
+	for i in range (0,n):
+		x=randint(-10,10)
+		print x
+	t=t-1
