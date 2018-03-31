@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+ 
+    int n,k,x,index,last;
+    cin>>n>>k>>x;
+    vector<int>vec(n+1);
+    int temp;
+    index=x;
+    int count;
+    int i,flag=0;
+    while(1){
+	if(index>n)
+	index=index%n;
+        temp=index%k;
+        i=index+1;
+	if(i>n)
+	 i=i%n;
+        count=0;
+        flag=0;
+        while(temp){
+              if(count>=n)
+                {	
+                    flag=1;
+                    break;
+                }
+            if(vec[i]!=-1&&i!=index){
+               vec[i]=-1;
+                temp--;
+ 
+ 
+            }count++;i++;if(i>n)
+		 i=i%n;
+ 
+        }
+ 
+if(vec[i]==-1){
+while(vec[i]==-1){
+i++;
+if(i>n)
+i=i%n;
+}
+}
+index=i;
+ 
+    if(flag==1){
+    cout<<index<<endl;
+    break;
+    }
+ 
+ 
+    }
+    return 0;
+}
