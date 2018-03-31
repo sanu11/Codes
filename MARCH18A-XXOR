@@ -1,0 +1,101 @@
+#include <bits/stdc++.h>
+using namespace std;
+void convertToBinary(int n,int a[] ,int binary[][31]){
+ int temp,j=0;
+ 
+for(int i=0;i<n;i++){
+ temp=a[i];
+ j=0;
+  while(temp){
+    binary[i][j]=temp%2;
+    temp/=2;
+    j++;
+  }
+  //reverse digits
+  for(int k=0;k<16;k++){
+   swap(binary[i][k],binary[i][30-k]);
+  }
+}
+}
+ 
+void preProcess(int n, int binary[][31], int count[][31]){
+for(int i=0;i<31;i++){
+if(binary[0][i]==0)
+count[0][i]++;
+}
+for(int i=1;i<n;i++){
+  for(int j=0;j<31;j++){
+   if(binary[i][j]==0)
+   count[i][j]=count[i-1][j]+1;
+   else
+   count[i][j]=count[i-1][j];
+ 
+  }
+ 
+ 
+}
+// for(int i=0;i<n;i++){
+// 	for(int j=0;j<32;j++)
+// 	cout<<binary[i][j];
+// cout<<endl;
+ 
+// }
+// cout<<endl;
+// for(int i=0;i<n;i++){
+// 	for(int j=0;j<32;j++)
+// 	cout<<count[i][j];
+// cout<<endl;
+ 
+// }
+ 
+}
+long long convertToDecimal(int binary[]){
+long long result=0;
+for(int i=0;i<31;i++){
+result+=binary[i]*pow(2,31-i-1);
+}
+return result;
+ 
+}
+int main() {
+	int n,q,l,r;
+	cin>>n>>q;
+	int a[n];
+	//to store binary form of a[i]
+	int binary[n][31]={0};
+	//to store cumulative count of either 0/1.
+	int count[n][31]={0};
+	for(int i=0;i<n;i++)
+	cin>>a[i];
+ 
+	convertToBinary(n,a,binary);
+	preProcess(n,binary,count);
+ 
+	while(q--){
+	cin>>l>>r;
+	l--;
+	r--;
+	int zeros,ones;
+	int result[31];
+ 
+	for(int i=0;i<31;i++){
+	if(l>0)
+	 zeros= count[r][i]-count[l-1][i];
+	else
+	 zeros= count[r][i];
+	 ones = r-l+1-zeros;
+ 
+	// if zeros are max. x has to be 1 so that result will be 1 since 0 xor 1 is 1. (make sum max)
+	//since x value has to be minimum consider 0  if no.of x=zeros and ones are same. (make x minimum). (since value of sum will be same for both bits)
+	 if(zeros<=ones)
+	  result[i]=0;
+	 else 
+	  result[i]=1;
+ 
+	}
+ 
+	cout<<convertToDecimal(result);
+	cout<<endl;
+	}
+	return 0;
+}
